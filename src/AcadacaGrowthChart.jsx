@@ -1689,8 +1689,8 @@ const AcadacaGrowthChart = () => {
                   const isSelected = selectedBreakdownChannel === ch.key;
                   return (
                     <Area key={`bd-${ch.key}`} yAxisId="left" type="monotone" dataKey={ch.stackKey}
-                      stroke={hasSelection && !isSelected ? `${ch.color}60` : ch.color}
-                      strokeWidth={isSelected ? 2.5 : hasSelection ? 1.2 : 1.5}
+                      stroke={hasSelection && !isSelected ? `${ch.color}90` : ch.color}
+                      strokeWidth={isSelected ? 2.5 : hasSelection ? 1.5 : 1.5}
                       fill="transparent"
                       fillOpacity={1}
                       activeDot={false}
@@ -1704,7 +1704,7 @@ const AcadacaGrowthChart = () => {
                           : ch.key === 'affiliate' ? p.payload._af
                           : p.payload._ot;
                         if (!rawVal) return null;
-                        return <circle cx={p.cx} cy={p.cy} r={isSelected ? 4 : hasSelection ? 2 : 2.5} fill={hasSelection && !isSelected ? `${ch.color}50` : ch.color} stroke={theme.background} strokeWidth={isSelected ? 2 : 1}
+                        return <circle cx={p.cx} cy={p.cy} r={isSelected ? 4 : hasSelection ? 2.5 : 2.5} fill={hasSelection && !isSelected ? `${ch.color}80` : ch.color} stroke={theme.background} strokeWidth={isSelected ? 2 : 1}
                           style={{ cursor: 'pointer' }}
                           onClick={(e) => {
                             e.stopPropagation();
@@ -1771,9 +1771,9 @@ const AcadacaGrowthChart = () => {
                     if (!hasSelection) {
                       fillColor = ch.fill;
                     } else if (isSelected) {
-                      fillColor = ch.fill.split(',').slice(0,3).join(',') + ', 0.35)';
+                      fillColor = ch.fill.split(',').slice(0,3).join(',') + ', 0.38)';
                     } else {
-                      fillColor = ch.fill.split(',').slice(0,3).join(',') + ', 0.04)';
+                      fillColor = ch.fill.split(',').slice(0,3).join(',') + ', 0.12)';
                     }
                     return <polygon key={`fill-${ch.key}`} points={points.join(' ')} fill={fillColor} stroke="none" style={{ pointerEvents: 'none' }} />;
                   })}
