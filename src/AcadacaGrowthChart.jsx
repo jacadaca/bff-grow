@@ -1689,8 +1689,9 @@ const AcadacaGrowthChart = () => {
                   const isSelected = selectedBreakdownChannel === ch.key;
                   return (
                     <Area key={`bd-${ch.key}`} yAxisId="left" type="monotone" dataKey={ch.stackKey}
-                      stroke={hasSelection && !isSelected ? `${ch.color}90` : ch.color}
-                      strokeWidth={isSelected ? 2.5 : hasSelection ? 1.5 : 1.5}
+                      stroke={ch.color}
+                      strokeOpacity={hasSelection && !isSelected ? 0.55 : 1}
+                      strokeWidth={isSelected ? 2.5 : 1.5}
                       fill="transparent"
                       fillOpacity={1}
                       activeDot={false}
@@ -1704,7 +1705,7 @@ const AcadacaGrowthChart = () => {
                           : ch.key === 'affiliate' ? p.payload._af
                           : p.payload._ot;
                         if (!rawVal) return null;
-                        return <circle cx={p.cx} cy={p.cy} r={isSelected ? 4 : hasSelection ? 2.5 : 2.5} fill={hasSelection && !isSelected ? `${ch.color}80` : ch.color} stroke={theme.background} strokeWidth={isSelected ? 2 : 1}
+                        return <circle cx={p.cx} cy={p.cy} r={isSelected ? 4 : 2.5} fill={ch.color} fillOpacity={hasSelection && !isSelected ? 0.5 : 1} stroke={theme.background} strokeWidth={isSelected ? 2 : 1}
                           style={{ cursor: 'pointer' }}
                           onClick={(e) => {
                             e.stopPropagation();
@@ -1852,15 +1853,15 @@ const AcadacaGrowthChart = () => {
                       if (x != null && y != null) points.push(`${x},${y}`);
                     });
                     if (points.length < 2) return null;
-                    let strokeColor, strokeW;
+                    let strokeColor, strokeW, strokeOpacity;
                     if (!hasSelection) {
-                      strokeColor = ch.color; strokeW = 1.5;
+                      strokeColor = ch.color; strokeW = 1.5; strokeOpacity = 1;
                     } else if (isSelected) {
-                      strokeColor = ch.color; strokeW = 2.5;
+                      strokeColor = ch.color; strokeW = 2.5; strokeOpacity = 1;
                     } else {
-                      strokeColor = ch.color + '90'; strokeW = 1.5;
+                      strokeColor = ch.color; strokeW = 1.5; strokeOpacity = 0.55;
                     }
-                    return <polyline key={`stroke-${ch.key}`} points={points.join(' ')} fill="none" stroke={strokeColor} strokeWidth={strokeW} strokeLinejoin="round" strokeLinecap="round" style={{ pointerEvents: 'none' }} />;
+                    return <polyline key={`stroke-${ch.key}`} points={points.join(' ')} fill="none" stroke={strokeColor} strokeWidth={strokeW} strokeOpacity={strokeOpacity} strokeLinejoin="round" strokeLinecap="round" style={{ pointerEvents: 'none' }} />;
                   })}
                   </g>);
                 }} />
