@@ -1842,6 +1842,26 @@ const AcadacaGrowthChart = () => {
                     });
                     return elements;
                   })()}
+                  {/* Stroke lines rendered on top of polygon fills so they stay visible */}
+                  {channelsToFill.map(ch => {
+                    const isSelected = selectedBreakdownChannel === ch.key;
+                    const points = [];
+                    activeData.forEach(dp => {
+                      const x = xAxis.scale(dp.month);
+                      const y = yAxis.scale(dp[ch.stackKey] || 0);
+                      if (x != null && y != null) points.push(`${x},${y}`);
+                    });
+                    if (points.length < 2) return null;
+                    let strokeColor, strokeW;
+                    if (!hasSelection) {
+                      strokeColor = ch.color; strokeW = 1.5;
+                    } else if (isSelected) {
+                      strokeColor = ch.color; strokeW = 2.5;
+                    } else {
+                      strokeColor = ch.color + '90'; strokeW = 1.5;
+                    }
+                    return <polyline key={`stroke-${ch.key}`} points={points.join(' ')} fill="none" stroke={strokeColor} strokeWidth={strokeW} strokeLinejoin="round" strokeLinecap="round" style={{ pointerEvents: 'none' }} />;
+                  })}
                   </g>);
                 }} />
               )}
