@@ -1092,10 +1092,10 @@ const AcadacaGrowthChart = () => {
                           setSelectedMilestone(cap);
                           if (serviceKPIs[cap.id]) { const vk = {}; serviceKPIs[cap.id].forEach(k => { vk[k.key] = true; }); setVisibleKPIs(vk); }
                         }
-                      }} style={{ cursor: 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: `2px solid ${isActive ? chipColor : chipColor + '30'}`, background: isActive ? (ch ? ch.fill.split(',').slice(0,3).join(',') + ', 0.35)' : cap.color + '35') : chipFill, transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s' }}>
-                        <div style={{ fontSize: '9px', color: chipColor, fontWeight: 600, whiteSpace: 'nowrap' }}>{cap.name}</div>
+                      }} style={{ cursor: 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: isActive ? `2.5px solid ${chipColor}` : `1.5px solid ${theme.border}`, background: isActive ? (ch ? ch.fill.split(',').slice(0,3).join(',') + ', 0.35)' : cap.color + '35') : theme.surface, boxShadow: isActive ? `0 0 8px ${chipColor}40` : 'none', transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s', opacity: isActive ? 1 : 0.75 }}>
+                        <div style={{ fontSize: '9px', color: isActive ? chipColor : theme.textMuted, fontWeight: isActive ? 700 : 600, whiteSpace: 'nowrap' }}>{cap.name}</div>
                         {val != null ? (
-                          <div style={{ fontSize: '12px', fontWeight: 700, color: theme.text, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
+                          <div style={{ fontSize: '12px', fontWeight: 700, color: isActive ? theme.text : theme.textMuted, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
                         ) : (
                           <div style={{ fontSize: '10px', fontWeight: 600, color: theme.muted, whiteSpace: 'nowrap' }}>{cap.type === 'conversion_optimizer' ? 'Cross-channel' : 'Active'}</div>
                         )}
@@ -1134,9 +1134,9 @@ const AcadacaGrowthChart = () => {
                         setSelectedMilestone(otherCap);
                         if (serviceKPIs['other']) { const vk = {}; serviceKPIs['other'].forEach(k => { vk[k.key] = true; }); setVisibleKPIs(vk); }
                       }
-                    }} style={{ cursor: 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: `2px solid ${isActive ? chipColor : chipColor + '30'}`, background: isActive ? chipFill.split(',').slice(0,3).join(',') + ', 0.35)' : chipFill, transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s' }}>
-                      <div style={{ fontSize: '9px', color: chipColor, fontWeight: 600, whiteSpace: 'nowrap' }}>Other / Direct</div>
-                      <div style={{ fontSize: '12px', fontWeight: 700, color: theme.text, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
+                    }} style={{ cursor: 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: isActive ? `2.5px solid ${chipColor}` : `1.5px solid ${theme.border}`, background: isActive ? chipFill.split(',').slice(0,3).join(',') + ', 0.35)' : theme.surface, boxShadow: isActive ? `0 0 8px ${chipColor}40` : 'none', transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s', opacity: isActive ? 1 : 0.75 }}>
+                      <div style={{ fontSize: '9px', color: isActive ? chipColor : theme.textMuted, fontWeight: isActive ? 700 : 600, whiteSpace: 'nowrap' }}>Other / Direct</div>
+                      <div style={{ fontSize: '12px', fontWeight: 700, color: isActive ? theme.text : theme.textMuted, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
                     </div>
                   );
                 })()}
@@ -1169,10 +1169,10 @@ const AcadacaGrowthChart = () => {
                       e.stopPropagation();
                       if (selectedMilestone?.id === cap.id) return; // already active, do nothing
                       handleSelectCapability(cap);
-                    }} style={{ cursor: isActive ? 'default' : 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: `2px solid ${isActive ? chipColor : chipColor + '30'}`, background: isActive ? (ch ? ch.fill.split(',').slice(0,3).join(',') + ', 0.35)' : cap.color + '35') : chipFill, transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s' }}>
-                      <div style={{ fontSize: '9px', color: chipColor, fontWeight: 600, whiteSpace: 'nowrap' }}>{cap.name}</div>
+                    }} style={{ cursor: isActive ? 'default' : 'pointer', textAlign: 'center', padding: '4px 8px', borderRadius: '4px', border: isActive ? `2.5px solid ${chipColor}` : `1.5px solid ${theme.border}`, background: isActive ? (ch ? ch.fill.split(',').slice(0,3).join(',') + ', 0.35)' : cap.color + '35') : theme.surface, boxShadow: isActive ? `0 0 8px ${chipColor}40` : 'none', transform: isActive ? 'scale(1.05)' : 'none', transition: 'all 0.15s', opacity: isActive ? 1 : 0.75 }}>
+                      <div style={{ fontSize: '9px', color: isActive ? chipColor : theme.textMuted, fontWeight: isActive ? 700 : 600, whiteSpace: 'nowrap' }}>{cap.name}</div>
                       {val != null ? (
-                        <div style={{ fontSize: '12px', fontWeight: 700, color: theme.text, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
+                        <div style={{ fontSize: '12px', fontWeight: 700, color: isActive ? theme.text : theme.textMuted, whiteSpace: 'nowrap' }}>{formatCurrency(val)} <span style={{ fontSize: '9px', fontWeight: 500, color: theme.muted }}>({pct}%)</span></div>
                       ) : (
                         <div style={{ fontSize: '10px', fontWeight: 600, color: theme.muted, whiteSpace: 'nowrap' }}>{cap.type === 'conversion_optimizer' ? 'Cross-channel' : 'Active'}</div>
                       )}
