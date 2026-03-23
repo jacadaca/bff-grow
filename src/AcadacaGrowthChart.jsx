@@ -1690,8 +1690,8 @@ const AcadacaGrowthChart = () => {
                   return (
                     <Area key={`bd-${ch.key}`} yAxisId="left" type="monotone" dataKey={ch.stackKey}
                       stroke={ch.color}
-                      strokeOpacity={hasSelection && !isSelected ? 0.55 : 1}
-                      strokeWidth={isSelected ? 2.5 : 1.5}
+                      strokeOpacity={0}
+                      strokeWidth={0}
                       fill="transparent"
                       fillOpacity={1}
                       activeDot={false}
@@ -1855,11 +1855,11 @@ const AcadacaGrowthChart = () => {
                     if (points.length < 2) return null;
                     let strokeColor, strokeW, strokeOpacity;
                     if (!hasSelection) {
-                      strokeColor = ch.color; strokeW = 1.5; strokeOpacity = 1;
+                      strokeColor = ch.color; strokeW = 1; strokeOpacity = 0.35;
                     } else if (isSelected) {
                       strokeColor = ch.color; strokeW = 2.5; strokeOpacity = 1;
                     } else {
-                      strokeColor = ch.color; strokeW = 1.5; strokeOpacity = 0.55;
+                      strokeColor = ch.color; strokeW = 1; strokeOpacity = 0.3;
                     }
                     return <polyline key={`stroke-${ch.key}`} points={points.join(' ')} fill="none" stroke={strokeColor} strokeWidth={strokeW} strokeOpacity={strokeOpacity} strokeLinejoin="round" strokeLinecap="round" style={{ pointerEvents: 'none' }} />;
                   })}
