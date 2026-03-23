@@ -339,7 +339,7 @@ const AcadacaGrowthChart = () => {
   const [configStartDay, setConfigStartDay] = useState('');
   const [configKPIs, setConfigKPIs] = useState({});
   const [configCosts, setConfigCosts] = useState([{ amount: '', frequency: 'one-time' }]);
-  const currentMonthIndex = 30;
+  const currentMonthIndex = 31;
   const [visibleWindow, setVisibleWindow] = useState(18);
   const [visibleRangeStart, setVisibleRangeStart] = useState(21);
   const [visibleRangeEnd, setVisibleRangeEnd] = useState(38);
