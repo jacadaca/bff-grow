@@ -859,7 +859,7 @@ const AcadacaGrowthChart = () => {
         {/* Header */}
         <div style={{ marginBottom: '8px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '4px', flexWrap: 'wrap' }}>
-            <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 800, color: theme.text, letterSpacing: '-0.5px' }}>Client-X Performance Trajectory</h1>
+            <h1 style={{ margin: 0, fontSize: '32px', fontWeight: 800, color: theme.text, letterSpacing: '-0.5px' }}>Demo Store Grow</h1>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: '8px', marginBottom: '12px' }}>
             <svg width="28" height="33" viewBox="0 0 111 130" fill="none" xmlns="http://www.w3.org/2000/svg" style={{ display: 'block', marginTop: '-12px' }}>
